@@ -14,3 +14,10 @@ class CommentView(TemplateView):
 
     def get(self, request, rating):
         return render(request, self.template, context={'rating': rating})
+
+
+class ThankView(TemplateView):
+    template = 'thanks.html'
+
+    def get(self, request):
+        return render(request, self.template)

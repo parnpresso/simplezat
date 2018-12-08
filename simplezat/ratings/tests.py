@@ -53,3 +53,12 @@ class CommentViewTest(TestCase):
                 f'<input type="hidden" name="rating" value="{each}" />' \
                 '<input type="submit" /></form>'
             self.assertContains(response, expected, status_code=200)
+
+
+class ThanksViewTest(TestCase):
+    def test_thanks_view_should_show_thank_text(self):
+        url = reverse('thanks')
+        response = self.client.get(url)
+
+        expected = '<h1>Thank you!</h1>'
+        self.assertContains(response, expected, status_code=200)
