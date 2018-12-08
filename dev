@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+start_cypress() {
+  ./tests/node_modules/.bin/cypress open
+}
+
+
+if [ $# -eq 0 ]
+  then
+    help
+fi
+
+$*
