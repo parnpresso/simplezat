@@ -1,0 +1,7 @@
+<h1>Any comment?</h1>
+
+<form action="." method="POST">
+  {% csrf_token %} <textarea name="comment"></textarea>
+  <input type="hidden" name="rating" value="{{ rating }}" />
+  <input type="submit" />
+</form>
