@@ -5,4 +5,6 @@ from django.views import View
 
 class RatingView(View):
     def get(self, request):
-        return HttpResponse()
+        html = '<h1>How do we do?</h1>'
+
+        return HttpResponse(html)
