@@ -46,7 +46,7 @@ class CommentViewTest(TestCase):
             expected = '<input type="hidden" name="csrfmiddlewaretoken"'
             self.assertContains(response, expected, status_code=200)
 
-            expected = '<textarea name="comment"></textarea>\n  ' \
-                f'<input type="hidden" name="rating" value="{each}" />\n  ' \
-                '<input type="submit" />\n</form>\n'
+            expected = '<textarea name="comment"></textarea>' \
+                f'<input type="hidden" name="rating" value="{each}" />' \
+                '<input type="submit" /></form>'
             self.assertContains(response, expected, status_code=200)
