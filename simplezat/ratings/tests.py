@@ -54,6 +54,17 @@ class CommentViewTest(TestCase):
                 '<input type="submit" /></form>'
             self.assertContains(response, expected, status_code=200)
 
+    def test_submit_form_should_redirect_to_thank_you_page(self):
+        url = reverse('comments', kwargs={'rating': 'positive'})
+        response = self.client.post(url)
+
+        self.assertRedirects(
+            response,
+            reverse('thanks'),
+            status_code=302,
+            target_status_code=200
+        )
+
 
 class ThanksViewTest(TestCase):
     def test_thanks_view_should_show_thank_text(self):

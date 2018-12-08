@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.generic import TemplateView
 
 
@@ -14,6 +15,10 @@ class CommentView(TemplateView):
 
     def get(self, request, rating):
         return render(request, self.template, context={'rating': rating})
+
+    def post(self, request, rating):
+        return redirect(reverse('thanks'))
+
 
 
 class ThankView(TemplateView):
