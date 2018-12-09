@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  web:
+    image: parnpresso/simplezat:live
+    ports:
+      - '8000:8000'
+    command: ./entrypoint.prod.sh
