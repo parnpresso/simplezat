@@ -1,5 +1,5 @@
 [dev]
-35.198.237.174 ansible_ssh_user=parnpresso ansible_ssh_private_key_file=/Users/parn/.ssh/simplezat
+35.198.237.174 ansible_ssh_user=parnpresso
 
 [prod]
-35.240.179.3 ansible_ssh_user=parnpresso ansible_ssh_private_key_file=/Users/parn/.ssh/simplezat
+35.240.179.3 ansible_ssh_user=parnpresso
