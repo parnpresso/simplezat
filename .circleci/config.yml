@@ -53,15 +53,12 @@ workflows:
   simplezat_pipeline:
     jobs:
       - checkout_code
-      - python_dependencies:
-          requires:
-            - checkout_code
       - static_analysis:
           requires:
-            - python_dependencies
+            - checkout_code
       - unit_tests:
           requires:
-            - python_dependencies
+            - checkout_code
       - deploy_dev:
           requires:
             - unit_tests
