@@ -19,7 +19,8 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            echo 'hello'
+            pip3 install pipenv
+            pipenv install --dev
   static_analysis:
     working_directory: ~/simplezat
     docker:
@@ -28,9 +29,9 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: Install Dependencies
+          name: Run static analysis
           command: |
-            echo 'hello'
+            pipenv run flake8
   unit_tests:
     working_directory: ~/simplezat
     docker:
@@ -39,9 +40,10 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: Install Dependencies
+          name: Run unit test
           command: |
-            echo 'hello'
+            cd simplezat
+            pipenv run python manage.py test
   deploy_dev:
     working_directory: ~/simplezat
     docker:
@@ -50,9 +52,11 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-          name: Install Dependencies
+          name: Deploy dev
           command: |
-            echo 'hello'
+            cd deployment
+            pipenv install
+            pipenv run ansible-playbook playbooks/dev.yml --extra-vars "project_path=~/simplezat"
 
 workflows:
   version: 2
