@@ -31,7 +31,7 @@ jobs:
       - run:
           name: Run static analysis
           command: |
-            pipenv run flake8
+            pipenv run --dev flake8
   unit_tests:
     working_directory: ~/simplezat
     docker:
@@ -43,7 +43,7 @@ jobs:
           name: Run unit test
           command: |
             cd simplezat
-            pipenv run python manage.py test
+            pipenv run --dev python manage.py test
   deploy_dev:
     working_directory: ~/simplezat
     docker:
