@@ -62,12 +62,34 @@ jobs:
             docker push parnpresso/simplezat:stable
       - add_ssh_keys
       - run:
-          name: Deploy dev
+          name: Deploy to Dev Server
           command: |
             cd deployment
             ssh-keyscan -H 35.198.237.174 >> ~/.ssh/known_hosts
             pipenv install
             pipenv run ansible-playbook playbooks/dev.yml --extra-vars "project_path=~/simplezat"
+  deploy_production:
+    working_directory: ~/simplezat
+    docker:
+      - image: circleci/python:3.7.1
+    steps:
+      - attach_workspace:
+          at: .
+      - setup_remote_docker
+      - run:
+          name: Build Live Images
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+            docker build -t parnpresso/simplezat:stable -f Dockerfile.dev .
+            docker push parnpresso/simplezat:live
+      - add_ssh_keys
+      - run:
+          name: Deploy to Production Server
+          command: |
+            cd deployment
+            ssh-keyscan -H 35.240.179.3 >> ~/.ssh/known_hosts
+            pipenv install
+            pipenv run ansible-playbook playbooks/prod.yml --extra-vars "project_root=~/simplezat"
 
 workflows:
   version: 2
@@ -86,3 +108,10 @@ workflows:
       - deploy_dev:
           requires:
             - unit_tests
+      - wait_for_approval:
+          type: approval
+          requires:
+            - deploy_dev
+      - deploy_production:
+          requires:
+            - wait_for_approval
