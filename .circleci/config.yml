@@ -60,9 +60,7 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
             docker build -t parnpresso/simplezat:stable -f Dockerfile.dev .
             docker push parnpresso/simplezat:stable
-      - add_ssh_keys:
-          fingerprints:
-            - "67:b8:98:e9:26:b0:71:ad:9d:be:fe:ac:75:b0:4d:62"
+      - add_ssh_keys
       - run:
           name: Deploy dev
           command: |
