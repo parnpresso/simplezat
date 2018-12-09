@@ -62,7 +62,7 @@ jobs:
             docker push parnpresso/simplezat:stable
       - add_ssh_keys:
           fingerprints:
-            - ""
+            - "SHA256:Oz89/EK+pgxuA0vPuHkz4x3WtMAh0TlJatRHidx89/g"
       - run:
           name: Deploy dev
           command: |
