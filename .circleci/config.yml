@@ -67,7 +67,7 @@ jobs:
           name: Deploy dev
           command: |
             cd deployment
-            ssh-keyscan -H 35.198.237.174 >> ~/.ssh/know_hosts
+            ssh-keyscan -H 35.198.237.174 >> ~/.ssh/known_hosts
             pipenv install
             pipenv run ansible-playbook playbooks/dev.yml --extra-vars "project_path=~/simplezat"
 
