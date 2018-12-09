@@ -80,7 +80,7 @@ jobs:
           name: Build Live Images
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-            docker build -t parnpresso/simplezat:stable -f Dockerfile.dev .
+            docker build -t parnpresso/simplezat:live -f Dockerfile.prod .
             docker push parnpresso/simplezat:live
       - add_ssh_keys
       - run:
