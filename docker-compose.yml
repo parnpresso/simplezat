@@ -2,6 +2,7 @@ version: '3.7'
 
 services:
   web:
+    image: parnpresso/simplezat:unstable
     build:
       context: .
       dockerfile: Dockerfile
