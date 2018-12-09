@@ -53,6 +53,16 @@ jobs:
     steps:
       - attach_workspace:
           at: .
+      - setup_remote_docker
+      - run:
+          name: Build Image
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+            docker build -t parnpresso/simplezat:stable -f Dockerfile.dev
+            docker push parnpresso/simplezat:stable
+      - add_ssh_keys:
+          fingerprints:
+            - ""
       - run:
           name: Deploy dev
           command: |
