@@ -1,5 +1,5 @@
 [dev]
-35.198.237.174 ansible_ssh_user=parnpresso
+35.198.237.174 ansible_ssh_user=parn
 
 [prod]
-35.240.179.3 ansible_ssh_user=parnpresso
+35.240.179.3 ansible_ssh_user=parn
