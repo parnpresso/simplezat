@@ -105,3 +105,4 @@ venv.bak/
 
 tests/node_modules
 .vscode
+*.retry
