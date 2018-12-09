@@ -89,7 +89,7 @@ jobs:
             cd deployment
             ssh-keyscan -H 35.240.179.3 >> ~/.ssh/known_hosts
             pipenv install
-            pipenv run ansible-playbook playbooks/prod.yml --extra-vars "project_root=~/simplezat"
+            pipenv run ansible-playbook playbooks/prod.yml --extra-vars "project_path=~/simplezat"
 
 workflows:
   version: 2
